@@ -160,3 +160,52 @@ capability gap this run located.
 
 **Deferred to the user gate:** the adopt/decline call itself. Per house method the panel does not
 move standing; §5 of the final report carries the recommendation, the owner ratifies.
+
+---
+
+## 7. CORRECTION — filed 2026-07-24, after adjudication
+
+**This section supersedes part of §3 and §6 above. The superseded text is left standing so the
+correction is legible; do not read §3 without reading this.**
+
+A judge panel convened on this diagnosis (`findings/03-judge-panel.md`) **refused** the central
+inference. Two differently-blind seats rejected it independently:
+
+- **Coherence** charged `scope_creep_past_declared_bound`: §4's self-check stated the bound precisely
+  — Trellis has a registration surface *"but no single-artifact authoring unit… and no
+  packaging/distribution unit"* — and §3 then restated it with the qualifiers dropped as *"the
+  authoring-surface problem Trellis has not yet reached."*
+- **Corroboration**, reading Trellis's tree on a base disjoint from this diagnosis's citation chain,
+  **found the capability I claimed was absent, built and shipped**:
+  - `GROUNDED_AUTHORING.md` — *"Phases 1–2 IMPLEMENTED (Session 19)"*, `trellis_agent.py --mode author`,
+    a fixed template, a deterministic anchor gate, `npm run modules:author`.
+  - `src/core/authoring/` — assemble / corpus / seed / template / anchors / estimate, each with a paired test.
+  - `modules/*/module.json` — **a pack manifest carrying `acceptance`**, schema-validated at
+    `src/config/modules.ts:66`, four modules on disk.
+
+**So §3's table is wrong in two rows.** Trellis has an authoring unit and it has a packaging unit.
+The S-axis diagnosis was built on an absence that is not there.
+
+### What survives, and why it is better
+
+The **axis** holds — the gap is still S, not R, and §1's ruling-out of R was independently confirmed
+(bounded: Trellis's `locate` is line-granular where harper's `Span` is char-level, so "already holds
+the capability" is true of hash-guarded line addressing, not of span equivalence).
+
+What changes is **what is short on that axis**. Corroboration named it exactly:
+
+> `acceptance` is `.optional()` at `src/config/modules.ts:66`, and **no code consumes it**.
+
+That is harper's own defect — 64 of 351 Weir rules assert nothing while the generated harness passes —
+reached from the opposite direction, in Trellis's own tree.
+
+**Corrected finding.** The lever is not *"build an authoring surface."* It is:
+
+> **Make `acceptance` non-optional in the module manifest schema, and consume it at registration.**
+
+One schema change, in code that already exists, closing a failure class harper demonstrates at scale.
+That is a smaller, cheaper, and fully verified move — and it is only visible because the panel killed
+the larger claim.
+
+**Standing:** this correction is a finding, not a ratification. The change above is proposed, not
+adopted, and remains user-gated.

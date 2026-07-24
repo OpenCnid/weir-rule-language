@@ -1017,6 +1017,39 @@ see produces exactly the unreconcilable claim the fan-out discipline exists to p
 | C9 contribution machine | 120,134 | 49 |
 | **Total** | **1,283,821** | **558** |
 
+### CORRECTION — an inter-branch contradiction, found after publication
+
+**Found by:** the judge panel's coherence seat (`findings/03-judge-panel.md`), while ruling on an
+unrelated claim. Not by any cartographer, and not by the orchestrator.
+
+Two branches stated counts of the same population that could not both hold:
+
+- **C3:** *"only 89 meet the 15-test floor `AGENTS.md:226` demands"*
+- **C4:** *"84.6% of `.weir` files (297/351) carry fewer than the 15 tests `AGENTS.md:225` requires"*
+
+`89 + 297 = 386 > 351`.
+
+**Recounted against the pin, 2026-07-24.** The denominator is not the variable — the *definition of
+"assertion"* is:
+
+| Counting | Meet the 15 floor | Below it |
+|---|---|---|
+| `test` + `allows` lines together | **89** files (and 89 rule names) | 262 files |
+| `test` lines only | **54** | **297** ← C4's figure |
+
+Totals: 351 `.weir` files, 328 public rule names, 1,838 `test` lines, 450 `allows` lines.
+
+**Both branches were right about their own predicate; neither named it.** C3 counted `test`+`allows`,
+C4 counted `test` only. Read the two figures as answering different questions, because they do.
+
+My first hypothesis — that the split was per-file versus per-rule-name, the mechanism C9 had
+flagged — was **wrong**: 89 files and 89 rule names both meet the floor under `test`+`allows`, so that
+distinction is irrelevant here.
+
+**Unaffected:** the map's headline number, **64 of 351 rules ship zero assertions**, is a different
+predicate on a stated denominator. It was independently reproduced twice — once by the orchestrator's
+recount and once by a judge that had no access to either — and it stands.
+
 ### Honest gaps — what this map cannot support
 
 1. **Nothing was executed.** Every test count is a count of `#[test]` attributes or `test` lines in

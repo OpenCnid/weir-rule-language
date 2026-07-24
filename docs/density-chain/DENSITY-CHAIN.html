@@ -253,6 +253,7 @@ main li strong:first-child{position:relative}
 <a class="l3" href="#the-two-findings-every-branch-reached-independently">The two findings every branch reached independently</a>
 <a class="" href="#what-a-builder-of-a-composable-expert-system-should-take">What a builder of a composable expert system should take</a>
 <a class="" href="#provenance-method">Provenance &amp;amp; method</a>
+<a class="l3" href="#correction-an-inter-branch-contradiction-found-after-publication">CORRECTION — an inter-branch contradiction, found after publication</a>
 <a class="l3" href="#honest-gaps-what-this-map-cannot-support">Honest gaps — what this map cannot support</a></nav>
     <main><p><strong>Status: orientation artifact, reverse-engineered 2026-07-23/24 from a clone at <code>efa59c33</code>.</strong> PROPOSED / unratified. Subordinate to everything it summarizes. This map studies <a href="https://github.com/Automattic/harper"><code>Automattic/harper</code></a> — a project OpenCnid has no authority over — so the authority order is absolute and one-directional:</p>
 <pre><code>harper source  →  this map  →  any downstream decision</code></pre>
@@ -670,6 +671,20 @@ main li strong:first-child{position:relative}
 <p>The trunk, the temporal cross-section, the cross-link lattice, and the aggregation above were composed by the orchestrator <strong>after</strong> all nine returned, because a sibling speculating about a class it cannot see produces exactly the unreconcilable claim the fan-out discipline exists to prevent.</p>
 <p><strong>Telemetry of the run</strong>, as reported by the harness:</p>
 <div class="tw"><table><thead><tr><th>Class</th><th>Tokens</th><th>Tool uses</th></tr></thead><tbody><tr><td>C1 document model</td><td>144,634</td><td>38</td></tr><tr><td>C2 expression system</td><td>113,508</td><td>49</td></tr><tr><td>C3 Weir</td><td>159,861</td><td>65</td></tr><tr><td>C4 linter corpus</td><td>167,251</td><td>70</td></tr><tr><td>C5 spelling &amp; dictionaries</td><td>183,002</td><td>84</td></tr><tr><td>C6 POS tagging</td><td>114,271</td><td>64</td></tr><tr><td>C7 format adapters</td><td>124,806</td><td>61</td></tr><tr><td>C8 delivery surfaces</td><td>156,354</td><td>78</td></tr><tr><td>C9 contribution machine</td><td>120,134</td><td>49</td></tr><tr><td><strong>Total</strong></td><td><strong>1,283,821</strong></td><td><strong>558</strong></td></tr></tbody></table></div>
+<h3 id="correction-an-inter-branch-contradiction-found-after-publication">CORRECTION — an inter-branch contradiction, found after publication</h3>
+<p><strong>Found by:</strong> the judge panel's coherence seat (<code>findings/03-judge-panel.md</code>), while ruling on an unrelated claim. Not by any cartographer, and not by the orchestrator.</p>
+<p>Two branches stated counts of the same population that could not both hold:</p>
+<ul>
+<li><strong>C3:</strong> <em>"only 89 meet the 15-test floor <code>AGENTS.md:226</code> demands"</em></li>
+<li><strong>C4:</strong> <em>"84.6% of <code>.weir</code> files (297/351) carry fewer than the 15 tests <code>AGENTS.md:225</code> requires"</em></li>
+</ul>
+<p><code>89 + 297 = 386 &gt; 351</code>.</p>
+<p><strong>Recounted against the pin, 2026-07-24.</strong> The denominator is not the variable — the <em>definition of "assertion"</em> is:</p>
+<div class="tw"><table><thead><tr><th>Counting</th><th>Meet the 15 floor</th><th>Below it</th></tr></thead><tbody><tr><td><code>test</code> + <code>allows</code> lines together</td><td><strong>89</strong> files (and 89 rule names)</td><td>262 files</td></tr><tr><td><code>test</code> lines only</td><td><strong>54</strong></td><td><strong>297</strong> ← C4's figure</td></tr></tbody></table></div>
+<p>Totals: 351 <code>.weir</code> files, 328 public rule names, 1,838 <code>test</code> lines, 450 <code>allows</code> lines.</p>
+<p><strong>Both branches were right about their own predicate; neither named it.</strong> C3 counted <code>test</code>+<code>allows</code>, C4 counted <code>test</code> only. Read the two figures as answering different questions, because they do.</p>
+<p>My first hypothesis — that the split was per-file versus per-rule-name, the mechanism C9 had flagged — was <strong>wrong</strong>: 89 files and 89 rule names both meet the floor under <code>test</code>+<code>allows</code>, so that distinction is irrelevant here.</p>
+<p><strong>Unaffected:</strong> the map's headline number, <strong>64 of 351 rules ship zero assertions</strong>, is a different predicate on a stated denominator. It was independently reproduced twice — once by the orchestrator's recount and once by a judge that had no access to either — and it stands.</p>
 <h3 id="honest-gaps-what-this-map-cannot-support">Honest gaps — what this map cannot support</h3>
 <ol>
 <li><strong>Nothing was executed.</strong> Every test count is a count of <code>#[test]</code> attributes or <code>test</code> lines in</li>

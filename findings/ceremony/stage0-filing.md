@@ -1,0 +1,192 @@
+# Stage 0 — Candidate filing (complexity convocation, harper)
+
+**Filed:** 2026-07-23 · **Filer:** orchestrator, zero-model · **Rules in force:** 15, 17, 18, 6
+
+---
+
+## Scope, filed as intended — not inflated, not deflated
+
+The user's words: *"We want to find out if it'll be useful to use in any shape or form."* No complexity
+complaint was made. The convocation was invoked by the user as one of five named skills, so the
+driving question is filed at its skill-default — **is this complexity warranted** — scoped to the
+subject the invocation named: **the abstraction ladder that ends in Weir**.
+
+**Two scope facts that change the disposition vocabulary, filed explicitly:**
+
+1. **The artifact is not the user's.** The self-invested-claimant case this ceremony normally hardens
+   against does not obtain — nobody here authored harper. Rule 6 (mask authorship) is still honored
+   downstream, but for a different reason: to stop a 12.3k-star reputation from doing the judging.
+2. **No cut is executable.** We cannot simplify someone else's repository. A `cut` disposition here
+   therefore reads as *"do not copy this rung"* and a `keep` reads as *"this rung earned its place and
+   the shape is worth copying,"* which is the actual decision in front of the user. This is recorded
+   at filing time rather than discovered at disposition, so the judges are not asked a question whose
+   answer cannot be acted on.
+
+---
+
+## The filed units — verbatim spans, never retyped
+
+Eight units, each the exact bytes at the stated address. Adjacent qualifiers (doc comments that
+justify the unit) are included rather than cropped, per rule 17.
+
+### U1 — `Pattern`, the first rung
+`harper-core/src/patterns/mod.rs:42`
+
+```rust
+pub trait Pattern: LSend {
+    /// Check if the pattern matches at the start of the given token slice.
+    ///
+    /// Returns the length of the match if successful, or `None` if not.
+    fn matches(&self, tokens: &[Token], source: &[char]) -> Option<usize>;
+}
+```
+
+### U2 — `Step`, the second rung, and its blanket lift from `Pattern`
+`harper-core/src/expr/step.rs:3`
+
+```rust
+/// An atomic step within a larger expression.
+///
+/// Its principle job is to identify (if any) the next position of the cursor.
+/// When cursor is moved, all tokens between the current cursor and the target position will be
+/// added to the match group.
+pub trait Step: LSend {
+    fn step(&self, tokens: &[Token], cursor: usize, source: &[char]) -> Option<isize>;
+}
+
+impl<P> Step for P
+where
+    P: Pattern,
+{
+    fn step(&self, tokens: &[Token], cursor: usize, source: &[char]) -> Option<isize> {
+        self.matches(&tokens[cursor..], source).map(|i| i as isize)
+    }
+}
+```
+
+*Filer's note, labeled as a filer artifact per rule 18:* the doc comment reads "Its principle job",
+where "principal" is the standard spelling. Preserved as written. This is recorded because the
+artifact under study is a grammar checker and the garble sits in its own source; it is **not** offered
+as evidence for or against any verdict.
+
+### U3 — `Expr`, the third rung, and its blanket lift from `Step`
+`harper-core/src/expr/mod.rs:68`
+
+```rust
+pub trait Expr: LSend {
+    fn run(&self, cursor: usize, tokens: &[Token], source: &[char]) -> Option<Span<Token>>;
+}
+
+impl<S> Expr for S
+where
+    S: Step + ?Sized,
+{
+    fn run(&self, cursor: usize, tokens: &[Token], source: &[char]) -> Option<Span<Token>> {
+        self.step(tokens, cursor, source).map(|s| {
+            if s >= 0 {
+                Span::new_with_len(cursor, s as usize)
+            } else {
+                Span::new(add(cursor, s).unwrap(), cursor)
+            }
+        })
+    }
+}
+```
+
+### U4 — the Weir AST node set and its lowering onto `Expr`
+`harper-core/src/weir/ast.rs:84`
+
+```rust
+pub enum AstExprNode {
+    Whitespace,
+    /// A progressive verb.
+    Progressive,
+    UPOSSet(Vec<UPOS>),
+    Word(CharString),
+    DerivativeOf(CharString),
+    Punctuation(Punctuation),
+    Not(Box<AstExprNode>),
+    Seq(Vec<AstExprNode>),
+    Arr(Vec<AstExprNode>),
+    Filter(Vec<AstExprNode>),
+    ExprRef(CharString),
+    Anything,
+}
+
+impl AstExprNode {
+    /// Create an actual expression that fulfills the pattern matching contract defined by this tree.
+    ///
+    /// Requires a map of all expressions currently in the context.
+    pub fn to_expr(
+        &self,
+        ctx_exprs: &HashMap<String, Lrc<Box<dyn Expr>>>,
+    ) -> Result<Box<dyn Expr>, Error> {
+```
+
+### U5 — the Weir AST optimizer
+`harper-core/src/weir/optimize.rs:3`
+
+```rust
+/// Optimizes the AST to use fewer nodes.
+/// Returns whether an edit was made.
+pub fn optimize(stmts: &mut Vec<AstStmtNode>) -> bool {
+```
+
+Whole file is 61 lines.
+
+### U6 — the Weirpack manifest and its required-field validation
+`harper-core/src/weirpack/manifest.rs:75`
+
+```rust
+    fn validate_required(&self) -> Result<(), Error> {
+        self.author()?;
+        self.version()?;
+        self.description()?;
+        self.license()?;
+        Ok(())
+    }
+```
+
+Generated by `gen_fns!(author); gen_fns!(version); gen_fns!(description); gen_fns!(license);` at
+`manifest.rs:62`, over a `HashMap<String, Value>` that also accepts arbitrary fields via
+`set_field`/`get_field` (`manifest.rs:53`).
+
+### U7 — `Linter`, the consumer contract every rung serves
+`harper-core/src/linting/mod.rs:346`
+
+```rust
+pub trait Linter: LSend {
+    /// Analyzes a document and produces zero or more [`Lint`]s.
+    /// We pass `self` mutably for caching purposes.
+    fn lint(&mut self, document: &Document) -> Vec<Lint>;
+    /// A user-facing description of what kinds of grammatical errors this rule looks for.
+    /// It is usually shown in settings menus.
+    fn description(&self) -> &str;
+}
+```
+
+### U8 — `LintGroup`, the composition surface
+`harper-core/src/linting/lint_group/mod.rs` — 1,251 lines, the single largest file in `linting/`
+outside the rule corpus itself. Made runtime-extensible by `7fb35c0d` (2025-02-18).
+
+---
+
+## Measured scale of the filed region — facts, not impressions
+
+| Fact | Value | Locator |
+|---|---|---|
+| `expr/` | 23 files, 2,718 lines | `harper-core/src/expr/` |
+| `patterns/` | 16 files, 930 lines | `harper-core/src/patterns/` |
+| `weir/` + `weirpack/` | 10 files, 2,491 lines | `harper-core/src/weir*/` |
+| `linting/` Rust files | 300 | `harper-core/src/linting/*.rs` |
+| `.weir` rule files | 351 | repo-wide |
+| Files implementing `ExprLinter` | 279 | grep, reported by C2 cartographer |
+| `insert_expr_rule!` calls in `LintGroup` | 224 | `lint_group/mod.rs` |
+| Rungs coexisting today | 4 (`Pattern`, `Step`, `Expr`, Weir) | this filing |
+
+---
+
+## Pre-registration pointer
+
+The filer's expected verdicts are written to `stage3-prereg.md` at Stage 3, timestamped, and are
+never included in any judge prompt. Per rule 20 a forecast filed after the run does not count.
