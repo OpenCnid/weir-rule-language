@@ -150,6 +150,72 @@ failure"* — did not trigger. Five drawbacks across three seats and six units.
 
 ---
 
+## Audit of the panel (the judges-judge) — read this before trusting the table
+
+The audit seat re-verified the load-bearing citations against source (the missing `edit = true`; the
+five and only five `fn step` impls; `merge_from`'s unconditional `extend` against `add`'s
+refuse-and-record; the absence of any `.weirpack`) and reports **every one said what the seat
+claimed**. It then found four things about how the panel performed.
+
+- **The composer — `coverage_gap`. The most consequential finding in the run.** All thirty anchors
+  describe *rule-level detectors* — "an eggcorn detector", "a Weir rule declares four `allows`". **Not
+  one describes a trait, a blanket impl, an AST lowering, or a registration surface** — which is what
+  all eight filed units are. The seats visibly strained: grounding had to route a sign-branch in
+  `Expr::run` through an anchor about dialect fan-out; coherence spent a class anchored on a rule's
+  message fields on a missing `bool` write. **The run's sharpest verified defect had no anchor of its
+  shape.** The gate I passed at Stage 3 — "the candidate lies inside the domain by construction" —
+  was true of the *domain* and false of the *shape*, and I did not catch it.
+
+- **The filer (me) — `rubric_gamed`.** I shipped "Chronology of the four layers… `Expr` (renamed from
+  `Pattern`, 103 files)" *in the evidence bundle*, then pre-registered "U1 is my strongest drawback
+  call." Coherence's U1 drawback closes by citing that chronology back. The finding itself is
+  independently sound — coherence ran its own zero-consumer grep — but **my forecast was not
+  independent of the bundle I wrote.** That row is struck from calibration.
+
+- **Grounding and coherence — `systematic_drift`, friendlier vector.** Both made sub-unit carve-outs
+  in prose that never reach the verdict: grounding on U8's two `LruCache`s ("I neither credit nor
+  charge it") where its own `abstention_boundary` prescribed a jurisdiction abstention; coherence on
+  U7 and U8 ("I note but do not charge"). Narrow, verified, but **every carve-out resolves toward
+  clean, none toward drawback.** Zero abstentions across 24 cells.
+
+- **Corroboration — `none`.** One unflagged looseness: it carried the repo-wide 351 onto
+  `weir_rules/`, which holds 317. The 145 figure it drew from that is correct.
+
+### The finding that should change how you read the table
+
+> *"The filer's forecast was harsh on the two architectural units and clean on the plumbing. The panel
+> inverted it: the ladder came back clean on three of four rungs across all three seats, and all four
+> unforecast drawbacks landed in low-stakes plumbing… Bias did not vanish under correction; it
+> relocated from the architecture question — the one the user's 'worth copying?' decision actually
+> rests on — into the quiet channel."*
+
+The audit adds that those clean-on-architecture reads **survive its own check**, so the relocation is
+warranted — *"it is still where the least adversarial pressure was applied."*
+
+**Plainly: the `keep` verdicts on U2, U3, U4 and U7 — the rungs you would actually copy — are the
+least-tested claims in this run.** Not wrong. Less pressed. Weigh them accordingly.
+
+### Salience leak: present, and provably inert
+
+The characterization named `insert_expr_rule` vs `insert_struct_rule` — the only registration macro
+anywhere in it, pointing at U8 — and its vocabulary table names six of the eight units. But `Step`,
+`weirpack`, `optimize` and the chronology appear nowhere, there is no recency ordering, and the
+characterizer volunteered that the largest and smallest rule modules were deliberately left unnamed.
+**Decisive counter-evidence that the leak did not transmit: the composer produced thirty anchors and
+not one names a trait or a registration surface.** The leak existed; the composer demonstrably did not
+receive it.
+
+### What the audit could not do
+
+Two seats' telemetry was **lost by the harness** — coherence and corroboration returned no token,
+tool-use, or duration figures. So the audit cannot say whether either ran its anchors, and flags that
+corroboration's opening line *"Anchors worked first; discrimination confirmed"* **asserts a
+calibration it does not exhibit, with no channel to check it.** Every cross-seat effort comparison is
+therefore unbacked, and the audit made none. It also read an orchestrator-retyped characterization,
+so it cannot tell whether the leak it quotes was introduced or smoothed in my retype.
+
+---
+
 ## Standing
 
 Every **simplify** above is a `−1` doubt, and by the corrosion bound each cites **facts in harper's
