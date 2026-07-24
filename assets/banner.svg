@@ -1,0 +1,127 @@
+<svg viewBox="0 0 880 260" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="weir-rule-language: five boxes tracing harper's abstraction ladder from hand-written Rust to a distributable rule pack, the imperative bars shrinking as the declarative bars grow">
+  <defs>
+    <linearGradient id="ramp" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#58a6ff"/>
+      <stop offset="50%" stop-color="#9b8cf7"/>
+      <stop offset="100%" stop-color="#ef6fd0"/>
+    </linearGradient>
+  </defs>
+
+  <text x="440" y="48" text-anchor="middle" font-family="ui-monospace, 'Cascadia Code', Menlo, Consolas, monospace" font-size="34" font-weight="700" fill="url(#ramp)">weir-rule-language</text>
+  <text x="440" y="80" text-anchor="middle" font-family="ui-monospace, 'Cascadia Code', Menlo, Consolas, monospace" font-size="12.5" fill="#8b949e">a rule, its tests, and its license &#183; one artifact &#183; reverse-engineered from 4,460 commits</text>
+
+  <!-- five fixed-size boxes: the ladder rungs. Length never grows; what is inside changes kind. -->
+  <g fill="#8b949e" fill-opacity="0.06" stroke="#8b949e" stroke-opacity="0.45">
+    <rect x="80"  y="104" width="120" height="88" rx="10"/>
+    <rect x="230" y="104" width="120" height="88" rx="10"/>
+    <rect x="380" y="104" width="120" height="88" rx="10"/>
+    <rect x="530" y="104" width="120" height="88" rx="10"/>
+    <rect x="680" y="104" width="120" height="88" rx="10"/>
+  </g>
+
+  <g font-family="ui-monospace, 'Cascadia Code', Menlo, Consolas, monospace" font-size="15" fill="#8b949e">
+    <text x="215" y="152" text-anchor="middle">&#8594;</text>
+    <text x="365" y="152" text-anchor="middle">&#8594;</text>
+    <text x="515" y="152" text-anchor="middle">&#8594;</text>
+    <text x="665" y="152" text-anchor="middle">&#8594;</text>
+  </g>
+
+  <!-- Rung 1: hand-rolled Rust. Dense imperative bars, no declarative content. -->
+  <g transform="translate(80,104)" opacity="1">
+    <animate attributeName="opacity" values="0;1" dur="0.6s" begin="0s" fill="freeze"/>
+    <g fill="#58a6ff" fill-opacity="0.85">
+      <rect x="16" y="18" width="76" height="6" rx="3"/>
+      <rect x="16" y="30" width="88" height="6" rx="3"/>
+      <rect x="24" y="42" width="64" height="6" rx="3"/>
+      <rect x="24" y="54" width="80" height="6" rx="3"/>
+      <rect x="16" y="66" width="70" height="6" rx="3"/>
+    </g>
+  </g>
+
+  <!-- Rung 2: Pattern. One combinator emerges; imperative shrinks. -->
+  <g transform="translate(230,104)" opacity="1">
+    <animate attributeName="opacity" values="0;0;1" keyTimes="0;0.4;1" dur="1.0s" begin="0s" fill="freeze"/>
+    <g fill="#799bfa" fill-opacity="0.85">
+      <rect x="16" y="18" width="72" height="6" rx="3"/>
+      <rect x="16" y="30" width="60" height="6" rx="3"/>
+      <rect x="24" y="42" width="56" height="6" rx="3"/>
+    </g>
+    <g fill="none" stroke="#799bfa" stroke-width="2" stroke-opacity="0.9">
+      <rect x="16" y="56" width="34" height="18" rx="5"/>
+      <rect x="58" y="56" width="34" height="18" rx="5"/>
+    </g>
+  </g>
+
+  <!-- Rung 3: Expr. Combinators dominate. -->
+  <g transform="translate(380,104)" opacity="1">
+    <animate attributeName="opacity" values="0;0;1" keyTimes="0;0.57;1" dur="1.4s" begin="0s" fill="freeze"/>
+    <g fill="#9b8cf7" fill-opacity="0.85">
+      <rect x="16" y="18" width="48" height="6" rx="3"/>
+    </g>
+    <g fill="none" stroke="#9b8cf7" stroke-width="2" stroke-opacity="0.9">
+      <rect x="16" y="32" width="34" height="18" rx="5"/>
+      <rect x="58" y="32" width="34" height="18" rx="5"/>
+      <rect x="16" y="56" width="34" height="18" rx="5"/>
+      <rect x="58" y="56" width="34" height="18" rx="5"/>
+      <rect x="94" y="44" width="12" height="18" rx="5"/>
+    </g>
+  </g>
+
+  <!-- Rung 4: Weir. Declarative text lines + an inline test pair (the twin dots). -->
+  <g transform="translate(530,104)" opacity="1">
+    <animate attributeName="opacity" values="0;0;1" keyTimes="0;0.67;1" dur="1.8s" begin="0s" fill="freeze"/>
+    <g fill="#c47bf3" fill-opacity="0.9">
+      <rect x="14" y="16" width="92" height="5" rx="2.5"/>
+      <rect x="14" y="27" width="70" height="5" rx="2.5"/>
+      <rect x="14" y="38" width="84" height="5" rx="2.5"/>
+    </g>
+    <!-- the inline tests: input/expected pairs living in the same artifact -->
+    <g fill="#c47bf3" fill-opacity="0.55">
+      <circle cx="20" cy="56" r="3.5"/><circle cx="34" cy="56" r="3.5"/>
+      <circle cx="20" cy="68" r="3.5"/><circle cx="34" cy="68" r="3.5"/>
+      <circle cx="20" cy="80" r="3.5"/><circle cx="34" cy="80" r="3.5"/>
+    </g>
+    <g fill="none" stroke="#c47bf3" stroke-width="1.5" stroke-opacity="0.5">
+      <rect x="12" y="49" width="34" height="38" rx="5"/>
+    </g>
+  </g>
+
+  <!-- Rung 5: Weirpack. The whole box becomes one sealed, manifested unit. -->
+  <g transform="translate(680,104)" opacity="1">
+    <animate attributeName="opacity" values="0;0;1" keyTimes="0;0.75;1" dur="2.2s" begin="0s" fill="freeze"/>
+    <g fill="none" stroke="#ef6fd0" stroke-width="2" stroke-opacity="0.95">
+      <rect x="14" y="14" width="92" height="76" rx="8"/>
+    </g>
+    <g fill="#ef6fd0" fill-opacity="0.9">
+      <rect x="26" y="26" width="68" height="5" rx="2.5"/>
+      <rect x="26" y="37" width="52" height="5" rx="2.5"/>
+    </g>
+    <g fill="#ef6fd0" fill-opacity="0.5">
+      <circle cx="32" cy="55" r="3.5"/><circle cx="46" cy="55" r="3.5"/>
+      <circle cx="32" cy="67" r="3.5"/><circle cx="46" cy="67" r="3.5"/>
+    </g>
+    <!-- the manifest seal -->
+    <g fill="#ef6fd0" fill-opacity="0.85">
+      <rect x="66" y="52" width="28" height="5" rx="2.5"/>
+      <rect x="66" y="62" width="20" height="5" rx="2.5"/>
+      <rect x="66" y="72" width="24" height="5" rx="2.5"/>
+    </g>
+  </g>
+
+  <g font-family="ui-monospace, 'Cascadia Code', Menlo, Consolas, monospace" font-size="11" fill="#8b949e" text-anchor="middle">
+    <text x="140" y="212">hand-rolled</text>
+    <text x="290" y="212">Pattern</text>
+    <text x="440" y="212">Expr</text>
+    <text x="590" y="212">Weir</text>
+    <text x="740" y="212">Weirpack</text>
+  </g>
+  <g font-family="ui-monospace, 'Cascadia Code', Menlo, Consolas, monospace" font-size="10" fill="#8b949e" fill-opacity="0.7" text-anchor="middle">
+    <text x="140" y="228">2024-01</text>
+    <text x="290" y="228">2024-09</text>
+    <text x="440" y="228">2025-06</text>
+    <text x="590" y="228">2026-01</text>
+    <text x="740" y="228">2026-02</text>
+  </g>
+
+  <text x="440" y="250" text-anchor="middle" font-family="ui-monospace, 'Cascadia Code', Menlo, Consolas, monospace" font-size="11" fill="#8b949e" fill-opacity="0.8">two years of shrinking the distance between &#8220;I know this rule&#8221; and &#8220;the engine knows it&#8221;</text>
+</svg>
